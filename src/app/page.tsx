@@ -7,7 +7,7 @@ import { NetworkSwitcher } from "@/components/NetworkSwitcher";
 import { TokenBalance } from "@/components/TokenBalance";
 import { MintButton } from "@/components/MintButton";
 import { ForgeButton } from "@/components/ForgeButton";
-import { Card, CardHeader, CardTitle, CardContent } from "../components/ui/Card";
+import { Card, CardHeader, CardTitle, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 
 export default function Home() {
