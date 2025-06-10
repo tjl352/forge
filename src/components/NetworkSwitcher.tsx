@@ -3,7 +3,7 @@
 
 import { useChainId, useSwitchChain } from "wagmi";
 import { polygon } from "wagmi/chains";
-import { Button } from "@/components/ui/button";
+import { Button } from "../components/ui/button";
 
 export function NetworkSwitcher() {
   const chainId = useChainId();
