@@ -63,7 +63,7 @@ export function TradeButton({ inputTokenId }: { inputTokenId: number }) {
         <option value={2}>Token 2</option>
       </select>
 
-      <Button onClick={handleTrade} disabled={isPending}>
+      <Button onClick={handleTrade} disabled={isPending} className="bg-gray-800 text-white rounded-full px-4 py-1 text-sm hover:bg-gray-700">
         {isPending ? "Trading..." : `Trade #${inputTokenId}`}
       </Button>
     </div>

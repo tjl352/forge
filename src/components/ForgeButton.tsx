@@ -59,6 +59,7 @@ const handleForge = () => {
     <Button 
       onClick={handleForge}
       disabled={isPending || !hasRequiredTokens}
+      className="bg-gray-800 text-white rounded-full px-4 py-1 text-sm hover:bg-gray-700"
     >
       {isPending ? "Forging..." : "Forge"}
     </Button>
