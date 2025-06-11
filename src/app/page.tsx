@@ -7,7 +7,8 @@ import { NetworkSwitcher } from "@/components/NetworkSwitcher";
 import { TokenBalance } from "@/components/TokenBalance";
 import { MintButton } from "@/components/MintButton";
 import { ForgeButton } from "@/components/ForgeButton";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/Card";
+import { TradeButton } from "@/components/TradeButton";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
@@ -34,7 +35,7 @@ export default function Home() {
             </CardHeader>
             <CardContent>
               <p className="mb-2">Connected: {address}</p>
-              <p>MATIC Balance: {maticBalance?.formatted || "0"} MATIC</p>
+              <p>POL Balance: {maticBalance?.formatted || "0"} POL</p>
             </CardContent>
           </Card>
         </div>
@@ -86,16 +87,35 @@ export default function Home() {
             ))}
           </CardContent>
         </Card>
+        
+        <Card>
+          <CardHeader>
+            <CardTitle>Trade Forged Tokens</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {[3, 4, 5, 6].map((tokenId) => (
+              <div key={tokenId} className="flex justify-between items-center">
+                <div>
+                  <h3 className="font-medium">Token #{tokenId}</h3>
+                  <p className="text-sm text-gray-600">
+                    Balance: <TokenBalance tokenId={tokenId} />
+                  </p>
+                </div>
+                <TradeButton inputTokenId={tokenId} />
+              </div>
+            ))}
+          </CardContent>
+        </Card>
       </div>
 
       <div className="mt-8 text-center">
         <Button variant="link" asChild>
           <a 
-            href="https://opensea.io/collection/your-collection" 
+            href={`https://testnets.opensea.io/${address}`} 
             target="_blank" 
             rel="noopener noreferrer"
           >
-            View on OpenSea
+            View on OpenSea Testnet
           </a>
         </Button>
       </div>
