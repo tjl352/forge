@@ -62,6 +62,7 @@ export function MintButton({ tokenId }: { tokenId: number }) {
       <Button 
         onClick={handleMint}
         disabled={isPending || !canMint}
+        className="bg-gray-800 text-white rounded-full px-4 py-1 text-sm hover:bg-gray-700"
       >
         {isPending ? "Minting..." : "Mint"}
       </Button>

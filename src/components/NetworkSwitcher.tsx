@@ -2,14 +2,14 @@
 "use client";
 
 import { useChainId, useSwitchChain } from "wagmi";
-import { polygon } from "wagmi/chains";
+import { polygonAmoy } from "wagmi/chains";
 import { Button } from "../components/ui/button";
 
 export function NetworkSwitcher() {
   const chainId = useChainId();
   const { switchChain } = useSwitchChain();
 
-  if (chainId !== polygon.id) {
+  if (chainId !== polygonAmoy.id) {
     return (
       <div className="bg-yellow-100 border-l-4 border-yellow-500 p-4 mb-4">
         <div className="flex items-center">
@@ -23,10 +23,10 @@ export function NetworkSwitcher() {
               You're connected to the wrong network. Please switch to Polygon.
             </p>
             <Button
-              onClick={() => switchChain({ chainId: polygon.id })}
+              onClick={() => switchChain({ chainId: polygonAmoy.id })}
               className="mt-2 bg-yellow-500 hover:bg-yellow-600 text-white"
             >
-              Switch to Polygon
+              Switch to Polygon Amoy
             </Button>
           </div>
         </div>
