@@ -14,7 +14,7 @@ export function MintButton({ tokenId }: { tokenId: number }) {
   const { writeContract, isPending } = useWriteContract();
   const isAmoy = useChainId() == polygonAmoy.id;
 
-  const { data: lastMintTime } = useReadContract({
+  const { data: lastMintTime, refetch } = useReadContract({
     address: erc1155TokenAddress,
     abi: erc1155TokenAbi,
     functionName: "getLastMintTime",
@@ -85,6 +85,7 @@ export function MintButton({ tokenId }: { tokenId: number }) {
             console.log("  Block:", receipt.blockNumber.toString());
             console.log("  Tx Hash:", receipt.transactionHash);
 
+            refetch(); // update lastMintTime
             window.dispatchEvent(new Event("balanceUpdated"));
           },
           onError(error) {
