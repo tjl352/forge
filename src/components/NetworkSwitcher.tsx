@@ -20,7 +20,7 @@ export function NetworkSwitcher() {
           </div>
           <div className="ml-3">
             <p className="text-sm text-yellow-700">
-              You're connected to the wrong network. Please switch to Polygon.
+              You're connected to the wrong network. Please switch to Polygon Amoy.
             </p>
             <Button
               onClick={() => switchChain({ chainId: polygonAmoy.id })}

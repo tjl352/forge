@@ -1,6 +1,6 @@
-// app/page.tsx
 "use client";
 
+import { useEffect, useState } from "react";
 import { useAccount, useBalance } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { NetworkSwitcher } from "@/components/NetworkSwitcher";
@@ -12,11 +12,18 @@ import { Card, CardHeader, CardTitle, CardContent } from "../components/ui/card"
 import { Button } from "../components/ui/button";
 
 export default function Home() {
+  const [isClient, setIsClient] = useState(false);
   const { address } = useAccount();
   const { data: maticBalance } = useBalance({
     address,
-    token: "0x0000000000000000000000000000000000001010", // MATIC token address
+    token: "0x0000000000000000000000000000000000001010",
   });
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) return null; // Prevent hydration mismatch
 
   return (
     <main className="container mx-auto py-8">
@@ -87,13 +94,14 @@ export default function Home() {
             ))}
           </CardContent>
         </Card>
-        
+
+        {/* Trade Base Tokens Only (0-2) */}
         <Card>
           <CardHeader>
-            <CardTitle>Trade Forged Tokens</CardTitle>
+            <CardTitle>Trade Base Tokens</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {[3, 4, 5, 6].map((tokenId) => (
+            {[0, 1, 2].map((tokenId) => (
               <div key={tokenId} className="flex justify-between items-center">
                 <div>
                   <h3 className="font-medium">Token #{tokenId}</h3>
@@ -110,9 +118,9 @@ export default function Home() {
 
       <div className="mt-8 text-center">
         <Button variant="link" asChild>
-          <a 
-            href={`https://testnets.opensea.io/${address}`} 
-            target="_blank" 
+          <a
+            href={`https://testnets.opensea.io/${address}`}
+            target="_blank"
             rel="noopener noreferrer"
           >
             View on OpenSea Testnet
